@@ -19,3 +19,7 @@ Use crontab to scheduler an execution every minute.
 # Configuration
 Use the command below to find the device mac address 
     sudo hcitool lescan
+
+# Installation
+chmod +x Read_Sensor.sh
+./Read_Sensor.sh
