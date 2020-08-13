@@ -1,5 +1,5 @@
 # LYWSD03MMC
-This script uses common linux applications to get Temperature e Humidify data from Xiaomi LYWSD03MMC sensor
+This script uses common linux applications to get Temperature e Humidify data from Xiaomi Mijia Bluetooth Temperature humidity version 2 a.k.a. **LYWSD03MMC**
 
 This script is a modification from original version to use mosquitto_pub to send data over MQTT to a broker.
 Thanks to the author.
