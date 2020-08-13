@@ -24,3 +24,6 @@ Use the command below to find the device mac address
 chmod +x Read_Sensor.sh
 
 ./readSensor.sh
+
+
+![Xiaomi Mijia Bluetooth Temperature humidity version 2](https://raw.githubusercontent.com/thiagogalvao/LYWSD03MMC/master/LYWSD03MMC-Device.jpg)
