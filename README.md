@@ -23,4 +23,4 @@ Use the command below to find the device mac address
 # Installation
 chmod +x Read_Sensor.sh
 
-./Read_Sensor.sh
+./readSensor.sh
