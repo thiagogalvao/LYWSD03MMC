@@ -18,12 +18,12 @@ Use crontab to scheduler an execution every minute.
 
 # Configuration
 Use the command below to find the device mac address 
-    sudo hcitool lescan
+> **sudo hcitool lescan**
 
 # Installation
-chmod +x Read_Sensor.sh
+> **chmod +x Read_Sensor.sh**
 
-./readSensor.sh
+> **./readSensor.sh**
 
 
 ![Xiaomi Mijia Bluetooth Temperature humidity version 2](https://raw.githubusercontent.com/thiagogalvao/LYWSD03MMC/master/LYWSD03MMC-Device.jpg)
@@ -32,5 +32,6 @@ chmod +x Read_Sensor.sh
 # Troubleshoot
 Sometimes the devices get blocked, try to reset the Bluetooth interface with de follow commands:
 
-sudo hciconfig hci0 down
-sudo hciconfig hci0 up
+> **sudo hciconfig hci0 down**
+
+> sudo hciconfig hci0 up
