@@ -27,3 +27,10 @@ chmod +x Read_Sensor.sh
 
 
 ![Xiaomi Mijia Bluetooth Temperature humidity version 2](https://raw.githubusercontent.com/thiagogalvao/LYWSD03MMC/master/LYWSD03MMC-Device.jpg)
+
+
+# Troubleshoot
+Sometimes the devices get blocked, try to reset the Bluetooth interface with de follow commands:
+
+sudo hciconfig hci0 down
+sudo hciconfig hci0 up
