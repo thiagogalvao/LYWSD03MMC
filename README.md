@@ -28,7 +28,7 @@ sudo hcitool lescan
 
 Grant execution permissions
 ```
-chmod +x Read_Sensor.sh
+chmod +x readSensor.sh
 ``` 
 running..
 ```
