@@ -20,32 +20,38 @@
 #
 # 
 
-sensor_name="Sensor1"
-mac_address="X1:CX:00:BF:9B:99"
+sensor_name="Sensor"
+mac_address_list=("A4:C1:38:00:00:01" "A4:C1:38:00:00:02")
 mqtt_server="localhost"
 
-bt=$(timeout 15 gatttool -b $mac_address --char-write-req --handle='0x0038' --value="0100" --listen)
-if [ -z "$bt" ]
-then
-    echo "The reading failed"
-else
-    echo "Got data"
-    #echo $bt 
-    temphexa=$(echo $bt | awk -F ' ' '{print $12$11}'| tr [:lower:] [:upper:] )
-    humhexa=$(echo $bt | awk -F ' ' '{print $13}'| tr [:lower:] [:upper:])
-    temperature100=$(echo "ibase=16; $temphexa" | bc)
-    humidity=$(echo "ibase=16; $humhexa" | bc)
-    temperature=$(echo "scale=2;$temperature100/100"|bc)
-    echo $temperature
-    echo $humidity
+for count in ${!mac_address_list[@]}; do
+    idx=$(expr "$count" + "1")
+    mac_address=${mac_address_list[$count]}
+    sensor_name_idx="$sensor_name$idx"
 
-    if [ ! ${#temperature} -ge 6 ] 
+    bt=$(timeout 15 gatttool -b $mac_address --char-write-req --handle='0x0038' --value="0100" --listen)
+    if [ -z "$bt" ]
     then
-       mosquitto_pub -h $mqtt_server -m $temperature -t /LYWSD03MMC/$sensor_name/Temperature -d
-    fi
+        echo "The reading failed"
+    else
+        echo "Got data"
+        #echo $bt 
+        temphexa=$(echo $bt | awk -F ' ' '{print $12$11}'| tr [:lower:] [:upper:] )
+        humhexa=$(echo $bt | awk -F ' ' '{print $13}'| tr [:lower:] [:upper:])
+        temperature100=$(echo "ibase=16; $temphexa" | bc)
+        humidity=$(echo "ibase=16; $humhexa" | bc)
+        temperature=$(echo "scale=2;$temperature100/100"|bc)
+        echo $temperature
+        echo $humidity
+  
+        if [ ! ${#temperature} -ge 6 ] 
+        then
+           mosquitto_pub -h $mqtt_server -m $temperature -t /LYWSD03MMC/$sensor_name_idx/Temperature -d
+        fi
 
-    if [ ! ${#humidity} -ge 6 ] 
-    then
-       mosquitto_pub -h $mqtt_server -m $humidity -t /LYWSD03MMC/$sensor_name/Humidity -d
+        if [ ! ${#humidity} -ge 3 ] 
+        then
+           mosquitto_pub -h $mqtt_server -m $humidity -t /LYWSD03MMC/$sensor_name_idx/Humidity -d
+        fi
     fi
-fi
+done
