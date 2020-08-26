@@ -40,7 +40,7 @@ running..
 
 
 # Troubleshoot
-Sometimes the devices get blocked, try to reset the Bluetooth interface with de follow commands:
+Sometimes the devices get blocked, try to reset the Bluetooth interface with the follow commands:
 ```
 sudo hciconfig hci0 down
 
