@@ -1,7 +1,7 @@
 # LYWSD03MMC
-This script uses common linux applications to get Temperature e Humidify data from Xiaomi Mijia Bluetooth Temperature humidity version 2 a.k.a. **LYWSD03MMC**
+This script was made using typical Linux applications to get Temperature and Humidify data from Xiaomi Mijia Bluetooth Temperature humidity version 2 a.k.a. **LYWSD03MMC**
 
-This script is a modification from original version with support to use mosquitto_pub to send data over MQTT to a broker.
+This script is a modification from the original version with support to use mosquitto_pub to send data over MQTT to a broker.
 Thanks to the author.
 
 Reference: http://www.d0wn.com/using-bash-and-gatttool-to-get-readings-from-xiaomi-mijia-lywsd03mmc-temperature-humidity-sensor/
@@ -40,7 +40,7 @@ running..
 
 
 # Troubleshoot
-Sometimes the devices get blocked, try to reset the Bluetooth interface with the follow commands:
+Sometimes the devices get blocked. Try to reset the Bluetooth interface with the following commands:
 ```
 sudo hciconfig hci0 down
 
